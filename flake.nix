@@ -69,6 +69,10 @@
         # artifacts from above.
         my-crate = craneLib.buildPackage (commonArgs // {
           inherit cargoArtifacts;
+          doCheck = false;
+          # outputHashMode = "recursive";
+          # outputHashAlgo = "sha256";
+          # outputHash = lib.fakeHash;
         });
       in
       {
