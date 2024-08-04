@@ -31,7 +31,12 @@
         inherit (pkgs) lib;
 
         craneLib = crane.mkLib pkgs;
-        src = craneLib.cleanCargoSource ./.;
+        src = (pkgs.fetchFromGitHub {
+          owner = "wezm";
+          repo = "feedlynx";
+          rev = "0.2.2";
+          hash = "sha256-Z51W9aGSx6LKEft7nZ+oIpk10sF+vegkylJJOFIRQYU=";
+        });
 
         # Common arguments can be set here to avoid repeating them later
         commonArgs = {
