@@ -73,6 +73,7 @@
           # outputHashMode = "recursive";
           # outputHashAlgo = "sha256";
           # outputHash = lib.fakeHash;
+          meta.mainProgram = "feedlynx";
         });
       in
       {
