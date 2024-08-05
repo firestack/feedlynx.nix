@@ -132,6 +132,7 @@
           drv = feedlynx;
         };
 
+
         devShells.default = craneLib.devShell {
           # Inherit inputs from checks.
           checks = self.checks.${system};
@@ -144,5 +145,8 @@
             # pkgs.ripgrep
           ];
         };
-      });
+      }) // {
+
+        nixosModules.default = ./nixos-module.nix;
+    };
 }
