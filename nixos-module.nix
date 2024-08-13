@@ -59,10 +59,13 @@ in {
 			serviceConfig = {
 				ExecStart = "${lib.getExe cfg.package} ${cfg.feed_path}";
 				Restart = "always";
-				StartLimitBurst = 3;
-				StartLimitInterval = 10;
 				User = "feedlynx";
 				WorkingDirectory = config.users.users.feedlynx.home;
+			};
+
+			unitConfig = {
+				StartLimitBurst = 3;
+				StartLimitIntervalSec = 10;
 			};
 		};
 	};
