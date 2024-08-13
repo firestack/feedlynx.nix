@@ -43,7 +43,7 @@ in {
 		users.groups.feedlynx = {};
 
 		systemd.services.feedlynx = {
-			wantedBy = [ "multiuser.target" ];
+			wantedBy = [ "multi-user.target" ];
 			wants = [ "network-online.target" ];
 			description = "FeedLynx, Server to Collect links in your RSS reader.";
 
@@ -59,6 +59,8 @@ in {
 			serviceConfig = {
 				ExecStart = "${lib.getExe cfg.package} ${cfg.feed_path}";
 				Restart = "always";
+				StartLimitBurst = 3;
+				StartLimitIntervalSec = 10;
 				User = "feedlynx";
 				WorkingDirectory = config.users.users.feedlynx.home;
 			};
